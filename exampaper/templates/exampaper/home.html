@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .option {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <img src="profile_picture.jpg" alt="Profile Picture">
+        <span>Username</span>
+    </div>
+    <button id="profileBtn">Profile</button>
+</header>
+
+<main>
+
+    {% for quiz, question in quiz_questions %}
+        <h2 class "quiz">{{quiz.title}}</h2>
+        <p class="question">{{quiz.description}}</p>
+        <p class="question">{{question.question_number}}. {{question.text}}</p>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="answer" value = {{question.option1}}> {{question.option1}}
+            </label>
+            <label class="option">
+                <input type="radio" name="answer" value = {{question.option2}}> {{question.option2}}
+            </label>
+            <label class="option">
+                <input type="radio" name="answer" value= {{question.option3}}> {{question.option3}}
+            </label>
+            <label class="option">
+                <input type="radio" name="answer" value= {{question.option4}}"> {{question.option4}}
+            </label>
+        </div>
+    {% endfor %}
+    <div>
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+    </div>
+</main>
+
+</body>
+</html>
